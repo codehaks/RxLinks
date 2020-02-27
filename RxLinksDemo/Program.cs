@@ -25,8 +25,8 @@ namespace RxLinksDemo
                     Console.WriteLine($" {url} started --- ");
                     client.Timeout = TimeSpan.FromSeconds(100);
 
-                    var page = await client.GetAsync(url, HttpCompletionOption.ResponseContentRead);
-                    var pageSize = page.Content.Headers.ContentLength.Value;
+                    var content = await client.GetAsync(url, HttpCompletionOption.ResponseContentRead);
+                    var pageSize = content.Content.Headers.ContentLength.Value;
                     Console.WriteLine($" --- {url}                    (Size : {pageSize}) [{Thread.CurrentThread.ManagedThreadId}]");
 
                 }
